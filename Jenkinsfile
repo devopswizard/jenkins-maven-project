@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'source /etc/profile.d/maven.sh'
+                sh 'export M2_HOME=/opt/maven'
+                export PATH=${M2_HOME}/bin:${PATH}
                 sh 'mvn -f ./pom.xml -B -DskipTests clean package'
             }
             post {
