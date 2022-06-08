@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'export M2_HOME=/opt/maven'
-                export PATH=${M2_HOME}/bin:${PATH}
+                sh 'export PATH=${M2_HOME}/bin:${PATH}'
                 sh 'mvn -f ./pom.xml -B -DskipTests clean package'
             }
             post {
